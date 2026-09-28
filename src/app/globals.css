@@ -1,26 +1,251 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root,
+[data-theme="dark"] {
+  --bg-primary: #050608;
+  --bg-surface: rgba(255, 255, 255, 0.025);
+  --bg-surface-glass: rgba(14, 16, 22, 0.62);
+  --bg-surface-hover: rgba(255, 255, 255, 0.06);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.05);
+  --bg-systembar: rgba(5, 6, 8, 0.72);
+  --bg-modal: #0d0e12;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --border-hairline: rgba(255, 255, 255, 0.09);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-hover: rgba(255, 255, 255, 0.25);
+  --border-focus: rgba(255, 255, 255, 0.4);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --glass-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14), 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  --glass-shadow-hover: inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 12px 40px 0 rgba(0, 0, 0, 0.6);
+  
+  --accent: #f1f5f9;
+  --accent-rgb: 241, 245, 249;
+  --accent-soft: rgba(255, 255, 255, 0.06);
+  --accent-glow: rgba(255, 255, 255, 0.08);
+  --accent-contrast: #050608;
+  
+  --ambient-primary: rgba(255, 255, 255, 0.035);
+  --ambient-secondary: rgba(255, 255, 255, 0.02);
+  --vignette: rgba(5, 6, 8, 0.75);
+  
+  --selection-bg: rgba(255, 255, 255, 0.15);
+  --selection-text: #ffffff;
+  
+  color-scheme: dark;
+}
+
+[data-theme="color"] {
+  --bg-primary: #ffffff;
+  --bg-surface: rgba(255, 255, 255, 0.45);
+  --bg-surface-glass: rgba(255, 255, 255, 0.65);
+  --bg-surface-hover: rgba(255, 255, 255, 0.9);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.85);
+  --bg-systembar: rgba(255, 255, 255, 0.8);
+  --bg-modal: #ffffff;
+  
+  --text-primary: #000000;
+  --text-secondary: #0f172a;
+  --text-muted: #334155;
+  --text-dim: #64748b;
+  
+  --border-hairline: rgba(15, 23, 42, 0.12);
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-hover: rgba(15, 23, 42, 0.35);
+  --border-focus: rgba(15, 23, 42, 0.55);
+  --border-glass: rgba(255, 255, 255, 0.85);
+  --glass-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.95), 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  --glass-shadow-hover: inset 0 1px 0 0 rgba(255, 255, 255, 1), 0 12px 36px 0 rgba(15, 23, 42, 0.10);
+  
+  --accent: #0f172a;
+  --accent-rgb: 15, 23, 42;
+  --accent-soft: rgba(15, 23, 42, 0.06);
+  --accent-glow: rgba(15, 23, 42, 0.08);
+  --accent-contrast: #ffffff;
+  
+  --ambient-primary: rgba(16, 185, 129, 0.16);
+  --ambient-secondary: rgba(6, 182, 212, 0.12);
+  --vignette: rgba(255, 255, 255, 0.25);
+  
+  --selection-bg: rgba(15, 23, 42, 0.12);
+  --selection-text: #000000;
+  
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-canvas-bg: var(--bg-primary);
+  --color-canvas-surface: var(--bg-surface);
+  --color-canvas-elevated: var(--bg-surface-elevated);
+  --color-theme-accent: var(--accent);
+  --color-theme-border: var(--border-hairline);
+  
+  --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  transition: background-color 0.25s ease, color 0.25s ease;
+  scroll-behavior: smooth;
+}
+
+#projects,
+#code,
+#technologies,
+#identity,
+#studies,
+#contact {
+  scroll-margin-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/* Special Editorial Headline Contrast: White fill with black stroke in Color mode */
+.headline-contrast {
+  transition: color 0.25s ease, -webkit-text-stroke 0.25s ease;
+}
+
+[data-theme="color"] .headline-contrast {
+  color: #ffffff !important;
+  -webkit-text-stroke: 1.5px #000000;
+  text-stroke: 1.5px #000000;
+  paint-order: stroke fill;
+}
+
+[data-theme="dark"] .headline-contrast {
+  color: var(--text-primary);
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+}
+
+/* Sophisticated Glassmorphism Material Utilities */
+.glass-surface {
+  background-color: var(--bg-surface-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-surface-interactive {
+  background-color: var(--bg-surface-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--glass-shadow);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.glass-surface-interactive:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-hairline);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Focus visibility for WCAG 2.1 AA */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Micro-grid background utility */
+.bg-developer-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+}
+
+/* Normalized Logo Frame */
+.logo-frame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ambient Background Drift Animations (Pure GPU translate3d — Zero re-rasterization) */
+@keyframes ambient-drift-slow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0);
+  }
+  100% {
+    transform: translate3d(-18px, 14px, 0);
+  }
+}
+
+@keyframes ambient-drift-reverse {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-20px, 22px, 0);
+  }
+  100% {
+    transform: translate3d(16px, -14px, 0);
+  }
+}
+
+.ambient-animate-slow {
+  animation: ambient-drift-slow 48s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.ambient-animate-reverse {
+  animation: ambient-drift-reverse 60s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-animate-slow,
+  .ambient-animate-reverse {
+    animation: none !important;
+  }
 }
