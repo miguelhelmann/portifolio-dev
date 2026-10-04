@@ -3,7 +3,7 @@ import { DeveloperProfile, GitHubRepoItem, TechSkill } from '../types';
 export const DEVELOPER_PROFILE: DeveloperProfile = {
   name: 'Miguel Helmann',
   role: 'Developer',
-  tagline: 'I am a developer focused on building websites, landing pages, and simple systems.',
+  tagline: 'Desenvolvedor web focado na criação de interfaces modernas, landing pages de alto impacto e sistemas funcionais.',
   status: 'ACTIVE',
   location: 'Cascavel / PR',
   timezone: 'UTC-3',
@@ -41,6 +41,8 @@ export const GITHUB_REPOS: GitHubRepoItem[] = [
     explanation: 'Landing page responsiva com foco em estética visual de alto impacto, tipografia e estilização moderna.',
     url: 'https://github.com/miguelhelmann/FELINE',
     languages: ['TypeScript', 'CSS', 'HTML'],
+    previewImage: '/assets/projects/feline.png',
+    category: 'Landing Page',
   },
   {
     name: 'fish-suplementos-site',
@@ -48,6 +50,8 @@ export const GITHUB_REPOS: GitHubRepoItem[] = [
     explanation: 'Desenvolvimento de site comercial para apresentação de lojas físicas, catálogo de produtos e integração com WhatsApp.',
     url: 'https://github.com/miguelhelmann/fish-suplementos-site',
     languages: ['HTML5', 'CSS3', 'JavaScript'],
+    previewImage: '/assets/projects/fish-suplementos.png',
+    category: 'Website Comercial',
   },
   {
     name: 'glassmorphism-login',
@@ -55,6 +59,8 @@ export const GITHUB_REPOS: GitHubRepoItem[] = [
     explanation: 'Estudo prático de interface explorando efeitos translúcidos, profundidade com CSS e formulário interativo.',
     url: 'https://github.com/miguelhelmann/glassmorphism-login',
     languages: ['JavaScript', 'CSS', 'HTML'],
+    previewImage: '/assets/projects/glassmorphism-login.png',
+    category: 'Interface UI',
   },
   {
     name: 'miguelhelmann',
@@ -62,6 +68,8 @@ export const GITHUB_REPOS: GitHubRepoItem[] = [
     explanation: 'Configuração do README de perfil documentando linguagens e ferramentas de estudo em desenvolvimento web.',
     url: 'https://github.com/miguelhelmann/miguelhelmann',
     languages: ['Markdown'],
+    previewImage: '/assets/projects/miguelhelmann.png',
+    category: 'Perfil Dev',
   },
 ];
 

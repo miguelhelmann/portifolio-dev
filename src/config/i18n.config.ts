@@ -36,8 +36,13 @@ export interface TranslationDictionary {
     practicalPurposeLabel: string;
     techDetectedLabel: string;
     viewOnGithub: string;
+    viewLiveDemo: string;
     viewAllGithub: string;
     publicRepoBadge: string;
+    gitCloneLabel: string;
+    gitCloneCopy: string;
+    gitCloneCopied: string;
+    previewBadge: string;
     repos: Record<string, {
       description?: string;
       explanation: string;
@@ -75,6 +80,7 @@ export interface TranslationDictionary {
     emailAction: string;
     whatsappLabel: string;
     whatsappAction: string;
+    whatsappPrefill: string;
     githubLabel: string;
     githubAction: string;
     githubRole: string;
@@ -138,7 +144,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       developerName: "MIGUEL HELMANN",
       indexLabel: "ÍNDICE: 2026.01",
       disciplines: "Desenvolvimento web • Interfaces responsivas • Sistemas",
-      tagline: "Sou um desenvolvedor focado em construir websites, landing pages e sistemas simples.",
+      tagline: "Desenvolvedor web focado na criação de interfaces modernas, landing pages de alto impacto e sistemas funcionais.",
       promptButton: "$ miguel.inspect()",
       promptHint: "— pressione / para abrir prompt",
       navigateCode: "PROJETOS",
@@ -153,8 +159,13 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       practicalPurposeLabel: "O QUE É / OBJETIVO PRÁTICO",
       techDetectedLabel: "LINGUAGENS E TECNOLOGIAS DETECTADAS",
       viewOnGithub: "VER NO GITHUB",
+      viewLiveDemo: "VER DEMO",
       viewAllGithub: "VER TODOS OS REPOSITÓRIOS NO GITHUB",
       publicRepoBadge: "REPOSITÓRIO PÚBLICO",
+      gitCloneLabel: "CLONAR REPOSITÓRIO",
+      gitCloneCopy: "Copiar comando git clone",
+      gitCloneCopied: "Copiado! ✓",
+      previewBadge: "PREVIEW VISUAL",
       repos: {
         FELINE: {
           description: "landing page para uma marca fictícia de carros superesportivos.",
@@ -226,6 +237,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       emailAction: "Enviar mensagem direta",
       whatsappLabel: "WhatsApp",
       whatsappAction: "Conversa direta",
+      whatsappPrefill: "Olá Miguel, vi seu portfólio e gostaria de conversar sobre um projeto.",
       githubLabel: "GitHub",
       githubAction: "Repositórios",
       githubRole: "Repositórios & código público",
@@ -287,7 +299,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       developerName: "MIGUEL HELMANN",
       indexLabel: "INDEX: 2026.01",
       disciplines: "Web development • Responsive interfaces • Systems",
-      tagline: "I am a developer focused on building websites, landing pages, and simple systems.",
+      tagline: "Web developer focused on crafting responsive interfaces, high-impact landing pages, and functional applications.",
       promptButton: "$ miguel.inspect()",
       promptHint: "— press / to open prompt",
       navigateCode: "PROJECTS",
@@ -302,8 +314,13 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       practicalPurposeLabel: "WHAT IT DOES / PRACTICAL PURPOSE",
       techDetectedLabel: "DETECTED LANGUAGES & TECHNOLOGIES",
       viewOnGithub: "VIEW ON GITHUB",
+      viewLiveDemo: "LIVE DEMO",
       viewAllGithub: "VIEW ALL REPOSITORIES ON GITHUB",
       publicRepoBadge: "PUBLIC REPO",
+      gitCloneLabel: "CLONE REPOSITORY",
+      gitCloneCopy: "Copy git clone command",
+      gitCloneCopied: "Copied! ✓",
+      previewBadge: "VISUAL PREVIEW",
       repos: {
         FELINE: {
           description: "landing page for a fictional supercar brand.",
@@ -375,6 +392,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       emailAction: "Send direct message",
       whatsappLabel: "WhatsApp",
       whatsappAction: "Direct message",
+      whatsappPrefill: "Hello Miguel, I saw your portfolio and would like to talk about a project.",
       githubLabel: "GitHub",
       githubAction: "Repositories",
       githubRole: "Repositories & public code",

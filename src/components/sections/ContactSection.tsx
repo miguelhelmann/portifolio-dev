@@ -6,6 +6,7 @@ import { GitHubIcon, WhatsAppIcon, OutlookIcon } from "@/components/icons/TechIc
 import { DEVELOPER_PROFILE } from "@/config/portfolio.config";
 import { usePortfolio } from "@/context/PortfolioContext";
 import { EmailComposeModal } from "@/components/system/EmailComposeModal";
+import { LiquidText } from "@/components/ui/LiquidText";
 
 export const ContactSection: React.FC = React.memo(function ContactSection() {
   const { t, theme } = usePortfolio();
@@ -15,7 +16,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
 
   return (
     <section id="contact" aria-label="Contact" className="space-y-12 sm:space-y-16 pt-8 pb-20 scroll-mt-20">
-      {/* Section Architectural Rule */}
+      {/* Section Architectural Rule — Clean & Stable */}
       <div
         className="flex items-center border-b pb-4 font-sans text-xs transition-colors"
         style={{
@@ -24,7 +25,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
         }}
       >
         <div className="flex items-center gap-2">
-          <span className="font-bold" style={{ color: "var(--text-primary)" }}>
+          <span className="font-bold font-mono" style={{ color: "var(--text-primary)" }}>
             {t.contact.sectionNum}
           </span>
           <span className="opacity-40">/</span>
@@ -38,18 +39,19 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
 
       {/* Editorial Contact Composition */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-        {/* Left Side: Large Typographic Monolith — Professional Invitation */}
+        {/* Left Side: Large Typographic Monolith */}
         <div className="lg:col-span-6 space-y-4">
           <h2
             className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[0.95] uppercase transition-colors"
             style={{ color: "var(--text-primary)" }}
           >
-            {t.contact.headlinePart1}<br />
-            <span
-              className="headline-contrast inline-block transition-colors"
-            >
-              {t.contact.headlinePart2}
-            </span>
+            <span>{t.contact.headlinePart1}</span>
+            <br />
+            <LiquidText intensity={2.0}>
+              <span className="headline-contrast inline-block transition-colors">
+                {t.contact.headlinePart2}
+              </span>
+            </LiquidText>
           </h2>
           <p
             className="text-sm font-sans max-w-md pt-2 leading-relaxed transition-colors"
@@ -59,7 +61,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
           </p>
         </div>
 
-        {/* Right Side: Professional Destination Hierarchy — Strictly Equal Dimensions & Proportions */}
+        {/* Right Side: Professional Destination Hierarchy (Stable, high-end interactive cards) */}
         <div className="lg:col-span-6 space-y-3.5 font-sans">
           {/* 01. Outlook Email (Primary Direct with Webmail / Local App Fallback) */}
           {socials.email && (
@@ -69,7 +71,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
                 e.preventDefault();
                 setEmailModalOpen(true);
               }}
-              className="glass-surface-interactive group flex items-center justify-between p-5 sm:p-6 rounded-2xl cursor-pointer outline-none w-full"
+              className="glass-surface-interactive group flex items-center justify-between p-5 sm:p-6 rounded-2xl cursor-pointer outline-none w-full active:scale-[0.99] transition-all"
             >
               <div className="flex items-center gap-4 min-w-0">
                 <div
@@ -99,7 +101,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
                       {t.contact.emailAction}
                     </span>
                   </div>
-                  <div className="text-xs transition-colors mt-0.5 truncate" style={{ color: "var(--text-muted)" }}>
+                  <div className="text-xs transition-colors mt-0.5 truncate font-mono" style={{ color: "var(--text-muted)" }}>
                     {socials.email}
                   </div>
                 </div>
@@ -111,13 +113,13 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
             </a>
           )}
 
-          {/* 02. WhatsApp (Primary Direct) */}
+          {/* 02. WhatsApp (Primary Direct with Prefilled Intent Message) */}
           {socials.whatsapp && (
             <a
-              href={`https://wa.me/${socials.whatsapp.replace(/[^0-9]/g, "")}`}
+              href={`https://wa.me/${socials.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(t.contact.whatsappPrefill)}`}
               target="_blank"
               rel="noreferrer"
-              className="glass-surface-interactive group flex items-center justify-between p-5 sm:p-6 rounded-2xl cursor-pointer outline-none w-full"
+              className="glass-surface-interactive group flex items-center justify-between p-5 sm:p-6 rounded-2xl cursor-pointer outline-none w-full active:scale-[0.99] transition-all"
             >
               <div className="flex items-center gap-4 min-w-0">
                 <div
@@ -147,7 +149,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
                       {t.contact.whatsappAction}
                     </span>
                   </div>
-                  <div className="text-xs transition-colors mt-0.5 truncate" style={{ color: "var(--text-muted)" }}>
+                  <div className="text-xs transition-colors mt-0.5 truncate font-mono" style={{ color: "var(--text-muted)" }}>
                     {socials.whatsapp}
                   </div>
                 </div>
@@ -165,7 +167,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
               href={socials.github}
               target="_blank"
               rel="noreferrer"
-              className="glass-surface-interactive group flex items-center justify-between p-5 sm:p-6 rounded-2xl cursor-pointer outline-none w-full"
+              className="glass-surface-interactive group flex items-center justify-between p-5 sm:p-6 rounded-2xl cursor-pointer outline-none w-full active:scale-[0.99] transition-all"
             >
               <div className="flex items-center gap-4 min-w-0">
                 <div
@@ -195,7 +197,7 @@ export const ContactSection: React.FC = React.memo(function ContactSection() {
                       {t.contact.githubAction}
                     </span>
                   </div>
-                  <div className="text-xs transition-colors mt-0.5 truncate" style={{ color: "var(--text-muted)" }}>
+                  <div className="text-xs transition-colors mt-0.5 truncate font-mono" style={{ color: "var(--text-muted)" }}>
                     {socials.github.replace("https://", "")}
                   </div>
                 </div>

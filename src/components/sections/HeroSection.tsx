@@ -5,6 +5,8 @@ import { motion } from "motion/react";
 import { Terminal as TerminalIcon, ArrowDownRight, CornerDownLeft } from "lucide-react";
 import { usePortfolio } from "@/context/PortfolioContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { HeroKineticEntity } from "@/components/3d/HeroKineticEntity";
+import { LivingTypography } from "@/components/ui/LivingTypography";
 
 interface HeroSectionProps {
   onOpenPrompt?: () => void;
@@ -41,62 +43,34 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(function HeroS
   return (
     <section
       aria-label="Developer Identity"
-      className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 lg:pt-20 lg:pb-32"
+      className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 lg:pt-20 lg:pb-32 overflow-visible"
     >
+      {/* 3D Kinetic Polytope Monolith in the Hero Layer */}
+      <HeroKineticEntity />
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="space-y-12 sm:space-y-16"
+        className="relative z-10 space-y-12 sm:space-y-16"
       >
-        {/* Top Architectural Subtitle */}
-        <motion.div
-          variants={itemVariants}
-          className="flex items-center border-b pb-4 font-sans text-xs transition-colors"
-          style={{
-            borderColor: "var(--border-hairline)",
-            color: "var(--text-muted)",
-          }}
-        >
-          <div className="flex items-center gap-2">
-            <span className="font-bold tracking-wider uppercase" style={{ color: "var(--text-primary)" }}>
-              {t.hero.portalTag}
-            </span>
-            <span className="opacity-40">/</span>
-            <span className="tracking-wider uppercase font-semibold" style={{ color: "var(--text-secondary)" }}>
-              {t.hero.sectionTag}
-            </span>
-          </div>
-        </motion.div>
 
         {/* Oversized Typographic Monolith */}
-        <div className="select-none">
-          <motion.div variants={itemVariants} className="overflow-hidden">
-            <h1
-              className="font-display text-[15vw] sm:text-[14vw] lg:text-[11.5vw] font-bold tracking-[-0.04em] leading-[0.84] uppercase transition-colors"
-              style={{ color: "var(--text-primary)" }}
-            >
-              <span className="inline-block transition-transform duration-300 hover:translate-x-1">
-                MIGUEL
-              </span>
-              <br />
-              <span
-                className="headline-contrast inline-block transition-all duration-300"
-                style={{
-                  opacity: 0.95,
-                }}
-              >
-                HELMANN
-              </span>
-            </h1>
-          </motion.div>
+        <div className="select-none relative">
+          <LivingTypography firstName="MIGUEL" lastName="HELMANN" />
         </div>
 
         {/* Asymmetric Offset Content (Columns 5–12) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-4">
           {/* Deliberate Negative Space in Columns 1–4 */}
-          <div className="hidden lg:block lg:col-span-4 font-sans text-xs space-y-2" style={{ color: "var(--text-muted)" }}>
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-wider" style={{ color: "var(--text-primary)" }}>
+          <div
+            className="hidden lg:block lg:col-span-4 font-sans text-xs space-y-2"
+            style={{ color: "var(--text-muted)" }}
+          >
+            <div
+              className="flex items-center gap-1.5 font-semibold uppercase tracking-wider"
+              style={{ color: "var(--text-primary)" }}
+            >
               <ArrowDownRight className="w-4 h-4" />
               <span>{t.hero.indexLabel}</span>
             </div>
@@ -105,7 +79,7 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(function HeroS
             </p>
           </div>
 
-          {/* Core Ethos & Quiet Interaction in Columns 5–12 */}
+          {/* Core Ethos & Controlled Interaction in Columns 5–12 */}
           <motion.div variants={itemVariants} className="lg:col-span-8 space-y-6">
             <p
               className="text-lg sm:text-2xl font-normal leading-relaxed max-w-2xl transition-colors"
@@ -114,17 +88,17 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(function HeroS
               {t.hero.tagline}
             </p>
 
-            {/* Single Quiet Interaction Prompt */}
+            {/* Stable, Highly Refined CTAs (No cursor tracking / no button jumping) */}
             <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
               <button
                 onClick={onOpenPrompt}
-                className="glass-surface-interactive group inline-flex items-center gap-3 px-4 py-2.5 rounded-xl cursor-pointer font-sans text-xs sm:text-sm font-medium tracking-wide outline-none"
+                className="glass-surface-interactive group inline-flex items-center gap-3 px-4 py-2.5 rounded-xl cursor-pointer font-sans text-xs sm:text-sm font-medium tracking-wide outline-none active:scale-[0.98] transition-all"
                 style={{
                   color: "var(--text-secondary)",
                 }}
               >
                 <TerminalIcon
-                  className="w-4 h-4 group-hover:rotate-12 transition-transform"
+                  className="w-4 h-4 group-hover:rotate-12 transition-transform duration-200"
                   style={{ color: "var(--text-primary)" }}
                 />
                 <span>{t.hero.promptButton}</span>
@@ -136,11 +110,15 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(function HeroS
 
               <button
                 onClick={onNavigateWork}
-                className="text-xs font-sans font-medium tracking-wider uppercase transition-colors flex items-center gap-1.5 cursor-pointer py-1 outline-none group"
+                className="text-xs font-sans font-medium tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer py-2 px-1 outline-none group active:scale-[0.98]"
                 style={{ color: "var(--text-muted)" }}
               >
-                <span className="group-hover:text-[var(--text-primary)] transition-colors">{t.hero.navigateCode}</span>
-                <span className="group-hover:text-[var(--text-primary)] transition-colors">↓</span>
+                <span className="group-hover:text-[var(--text-primary)] transition-colors">
+                  {t.hero.navigateCode}
+                </span>
+                <span className="group-hover:text-[var(--text-primary)] transition-transform group-hover:translate-y-0.5">
+                  ↓
+                </span>
               </button>
             </div>
           </motion.div>

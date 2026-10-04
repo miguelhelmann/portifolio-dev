@@ -93,6 +93,20 @@ html {
   scroll-behavior: smooth;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
 #projects,
 #code,
 #technologies,
@@ -118,10 +132,10 @@ body {
 }
 
 [data-theme="color"] .headline-contrast {
-  color: #ffffff !important;
-  -webkit-text-stroke: 1.5px #000000;
-  text-stroke: 1.5px #000000;
-  paint-order: stroke fill;
+  color: #000000 !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+  opacity: 1 !important;
 }
 
 [data-theme="dark"] .headline-contrast {

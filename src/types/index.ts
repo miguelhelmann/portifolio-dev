@@ -44,6 +44,9 @@ export interface GitHubRepoItem {
   explanation: string;
   url: string;
   languages: string[];
+  demoUrl?: string;
+  previewImage?: string;
+  category?: string;
 }
 
 export interface SocialLinks {
